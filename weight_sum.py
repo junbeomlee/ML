@@ -7,10 +7,10 @@ def result_of_weighted_sum(NPM_score_list, ground_truth):
     # ground_truth = True cited paper's cluster_id
 
     citation = dict()
-    with open('cluster_num__count_final') as f:
+    with open('cluster_num__count_final_norm') as f:
         reader = csv.reader(f)
         for cluster_id, cit in reader:
-            citation[cluster_id] = int(cit)
+            citation[cluster_id] = float(cit)
 
     score_list = list()
     for cluster_id, NPM_score in NPM_score_list.items():

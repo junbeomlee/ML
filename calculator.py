@@ -1,6 +1,5 @@
 import operator
 import sys
-
 from weight_sum import result_of_weighted_sum
 
 if __name__ == "__main__":
@@ -19,7 +18,7 @@ if __name__ == "__main__":
     print(vocaDict)
     line_list = []
 
-    with open("./w2v_sig.index", encoding="ISO-8859-1") as f:
+    with open("./w2v_sig_norm.index", encoding="ISO-8859-1") as f:
         lines = f.readlines()
 
         for line in lines:
@@ -32,12 +31,14 @@ if __name__ == "__main__":
 
     # print(list)
     word_list = []
-    output = open('result', 'w');
+    output = open('result_norm', 'w+');
     with open(file_name, encoding="ISO-8859-1") as f:
         lines = f.readlines()
         index = 0
         line_cnt = 0
         for line in lines:
+            index += 1
+            print(index)
             sentence = line.split()
             id = sentence[0]
             sentence.remove(sentence[0])
@@ -76,7 +77,8 @@ if __name__ == "__main__":
                     score_dict, id)))
                 print(id + " " + str(result_of_weighted_sum(score_dict, id)))
                 output.write(id + " " + str(result_of_weighted_sum(score_dict, id)))
+                output.write("\n")
+
         line_cnt += 1
 
-        index += 1
-        print(index)
+
